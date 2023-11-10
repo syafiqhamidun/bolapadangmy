@@ -11,22 +11,24 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
+  
   import { Button } from "../ui/button";
   import { X } from "lucide-react";
   import { Label } from "../ui/label";
   import { Input } from "../ui/input";
+
   import Images from "next/image";
-  import { useState } from "react";
-  import SignupModal from "./SignupModal";
+import { useState } from "react";
 
 
- const LoginModal = () => {
+ const SignupModal = () => {
         const [open, setOpen] = useState<boolean>(false)
     return ( 
+
         <AlertDialog open={open}>
             <AlertDialogTrigger asChild>
                 <li onClick={() => setOpen(true)}>
-                   <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Sign In</Button> 
+                   <Label htmlFor="signup" className="text-rose-500 ml-2 hover:text-black cursor-pointer">Sign Up !</Label> 
                 </li>
             </AlertDialogTrigger>
 
@@ -34,13 +36,18 @@ import {
                 <AlertDialogHeader>
                     <AlertDialogTitle asChild>
                         <div className="flex justify-between items-center">
-                            <span>Login</span>
+                            <span>Sign Up </span>
                             <X className="cursor-pointer" onClick={() => setOpen(false)}/>
                         </div>
                     </AlertDialogTitle>
                     <AlertDialogDescription>
                         <form>
-                            <h1 className="text-lg font-bold text-black">Welcome to MY.PASAR</h1>
+                        <div className="mt-5">
+                                <Label htmlFor="name">Name</Label>
+                                <Input placeholder="Enter your name" id="name"/>
+                                <span className="text-red-400"></span>
+                            </div>
+
                             <div className="mt-5">
                                 <Label htmlFor="email">Email</Label>
                                 <Input placeholder="Enter your email" id="email"/>
@@ -52,8 +59,14 @@ import {
                     <AlertDialogDescription>
                         <form>
                             <div className="mt-5">
-                                <Label htmlFor="email">Password</Label>
+                                <Label htmlFor="password">Password</Label>
                                 <Input placeholder="Enter your password" id="password"/>
+                                <span className="text-red-400"></span>
+                            </div>
+
+                            <div className="mt-5">
+                                <Label htmlFor="cpassword">Confirm Password</Label>
+                                <Input placeholder="Confirm your password" id="cpassword"/>
                                 <span className="text-red-400"></span>
                             </div>
 
@@ -73,10 +86,6 @@ import {
                                 Continue with Google
                             </Button>
 
-                            <div className="mt-5 flex">
-                                Dont have an account ?
-                                <SignupModal/>
-                            </div>
                         </form>
 
                     </AlertDialogDescription>
@@ -88,4 +97,4 @@ import {
      );
  }
   
- export default LoginModal;
+ export default SignupModal;
