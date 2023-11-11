@@ -30,7 +30,9 @@ import { RegisterType, registerSchema } from "@/validations/authSchemas";
           } = useForm({
             resolver: yupResolver(registerSchema),
           })
-          const onSubmit = (data:RegisterType) => console.log(data)
+          const onSubmit = (data:RegisterType) => {
+            console.log(data)
+        };
 
     return ( 
 
