@@ -2,11 +2,8 @@
 
 import {
     AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
-    AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
@@ -19,10 +16,22 @@ import {
 
   import Images from "next/image";
 import { useState } from "react";
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { RegisterType, registerSchema } from "@/validations/authSchemas";
 
 
  const SignupModal = () => {
-        const [open, setOpen] = useState<boolean>(false)
+        const [open, setOpen] = useState<boolean>(false);
+        const {
+            register,
+            handleSubmit,
+            formState: { errors },
+          } = useForm({
+            resolver: yupResolver(registerSchema),
+          })
+          const onSubmit = (data:RegisterType) => console.log(data)
+
     return ( 
 
         <AlertDialog open={open}>
@@ -41,17 +50,17 @@ import { useState } from "react";
                         </div>
                     </AlertDialogTitle>
                     <AlertDialogDescription>
-                        <form>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mt-5">
                                 <Label htmlFor="name">Name</Label>
-                                <Input placeholder="Enter your name" id="name"/>
-                                <span className="text-red-400"></span>
+                                <Input placeholder="Enter your name" id="name" {...register("name")}/>
+                                <span className="text-red-400">{errors.name?.message}</span>
                             </div>
 
                             <div className="mt-5">
                                 <Label htmlFor="email">Email</Label>
-                                <Input placeholder="Enter your email" id="email"/>
-                                <span className="text-red-400"></span>
+                                <Input placeholder="Enter your email" id="email" {...register("email")}/>
+                                <span className="text-red-400">{errors.email?.message}</span>
                             </div>
                         </form>
                     </AlertDialogDescription>
@@ -60,14 +69,14 @@ import { useState } from "react";
                         <form>
                             <div className="mt-5">
                                 <Label htmlFor="password">Password</Label>
-                                <Input placeholder="Enter your password" id="password"/>
-                                <span className="text-red-400"></span>
+                                <Input placeholder="Enter your password" id="password" {...register("password")}/>
+                                <span className="text-red-400">{errors.password?.message}</span>
                             </div>
 
                             <div className="mt-5">
                                 <Label htmlFor="cpassword">Confirm Password</Label>
-                                <Input placeholder="Confirm your password" id="cpassword"/>
-                                <span className="text-red-400"></span>
+                                <Input placeholder="Confirm your password" id="cpassword" {...register("password_confirmation")}/>
+                                <span className="text-red-400">{errors.password_confirmation?.message}</span>
                             </div>
 
                             <div className="mt-5">
