@@ -126,7 +126,7 @@ export default function SignupModal () {
                         {/* Continue Button */}
 
                             <div className="mt-5">
-                                <Button className="bg-red-400 w-full" disabled={loading}>{loading ? "Processing" : "Continue"}</Button>
+                                <Button className="bg-green-600 w-full" disabled={loading}>{loading ? "Processing" : "Continue"}</Button>
                             </div>
                             <h1 className="text-center my-2 text-xl font-bold"> -- OR --</h1>
 

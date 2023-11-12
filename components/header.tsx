@@ -13,7 +13,7 @@ const Header = () => {
     {/* Left */}
       <div className="flex items-center h-10 my-auto">
         <Button variant={"miss"} className=" w-full md:w-auto py-2 rounded-md cursor-pointer flex-row items-center text-xl font-exo font-semibold">
-            MY.PASAR
+            MyPasar
         </Button>
       </div>
 
