@@ -36,7 +36,7 @@ export default function SignupModal () {
             formState: { errors },
           } = useForm<RegisterType>({
             resolver: yupResolver(registerSchema),
-          })
+          });
           
           const onSubmit = async (payload:RegisterType) => {
             setLoading(true)
@@ -83,6 +83,7 @@ export default function SignupModal () {
                         </div>
                     </AlertDialogTitle>
                     <AlertDialogDescription asChild>
+                        <ToastContainer/>
                         <form onSubmit={handleSubmit(onSubmit)}>
                         <ToastContainer/>
                         {/* Name */}

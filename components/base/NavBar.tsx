@@ -1,11 +1,14 @@
-"use client";
-
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 import { Fragment } from 'react'
-import { PopoverDemo } from "./buttonHeader/BtnHeader";
+import { NavMenu } from "./NavMenu";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { cookies } from "next/headers";
 
-const Header = () => {
+export default async function NavBar() {
+  const supabase = createServerComponentClient({cookies});
+  const session = await supabase.auth.getSession()
+  
   return ( 
   
   <header className="sticky top-0 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
@@ -27,7 +30,7 @@ const Header = () => {
 
     {/* Right */}
     <div>
-      <PopoverDemo/>
+      <NavMenu session={session.data?.session} />
     </div>
 
   </header> 
@@ -35,4 +38,3 @@ const Header = () => {
   );
 }
  
-export default Header;

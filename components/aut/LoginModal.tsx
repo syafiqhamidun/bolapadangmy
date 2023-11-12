@@ -2,11 +2,8 @@
 
 import {
     AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
-    AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
@@ -18,10 +15,43 @@ import {
   import Images from "next/image";
   import { useState } from "react";
   import SignupModal from "./SignupModal";
-
+  import { yupResolver } from "@hookform/resolvers/yup"
+  import { LoginSchema, LoginType, RegisterType, registerSchema } from "@/validations/authSchemas";
+  import { useForm } from "react-hook-form"
+  import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+  import { useRouter } from "next/navigation";
+  
 
  const LoginModal = () => {
-        const [open, setOpen] = useState<boolean>(false)
+        const [open, setOpen] = useState<boolean>(false);
+        const [loading, setLoading] = useState<boolean>(false);
+        const supabase = createClientComponentClient();
+        const router = useRouter();
+        const {
+            register,
+            handleSubmit,
+            formState: { errors },
+          } = useForm<LoginType>({
+            resolver: yupResolver(LoginSchema),
+          });
+
+        const onSubmit = async (payload:LoginType) => {
+            setLoading(true)
+            const {data, error} = await supabase.auth.signInWithPassword({
+                email : payload.email,
+                password : payload.password,
+            });
+
+            if (error) {
+                toast.error(error.message, {theme: "colored"})
+            } else if (data.user) {
+                setOpen(false)
+                toast.success("Logged in successfully !", {theme : "colored"});
+            };
+        }
+
     return ( 
         <AlertDialog open={open}>
             <AlertDialogTrigger asChild>
@@ -39,26 +69,24 @@ import {
                         </div>
                     </AlertDialogTitle>
                     <AlertDialogDescription>
-                        <form>
+                        <div>
+                            <ToastContainer/>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <h1 className="text-lg font-bold text-black">Welcome to MY.PASAR</h1>
                             <div className="mt-5">
                                 <Label htmlFor="email">Email</Label>
-                                <Input placeholder="Enter your email" id="email"/>
-                                <span className="text-red-400"></span>
+                                <Input placeholder="Enter your email" id="email" type="email" {...register("email")} />
+                                <span className="text-red-400">{errors.email?.message}</span>
                             </div>
-                        </form>
-                    </AlertDialogDescription>
 
-                    <AlertDialogDescription>
-                        <form>
                             <div className="mt-5">
                                 <Label htmlFor="email">Password</Label>
-                                <Input placeholder="Enter your password" id="password"/>
-                                <span className="text-red-400"></span>
+                                <Input placeholder="Enter your password" id="password" type="password" {...register("password")} />
+                                <span className="text-red-400">{errors.password?.message}</span>
                             </div>
 
                             <div className="mt-5">
-                                <Button className="bg-red-400 w-full">Continue</Button>
+                                <Button className="bg-green-600 w-full" disabled={loading}>{loading ? "processing" : "Continue"}</Button>
                             </div>
                             <h1 className="text-center my-2 text-xl font-bold"> -- OR --</h1>
 
@@ -78,8 +106,11 @@ import {
                                 <SignupModal/>
                             </div>
                         </form>
-
+                        </div>
                     </AlertDialogDescription>
+                    <div>
+
+                    </div>
                 </AlertDialogHeader>
 
             </AlertDialogContent>

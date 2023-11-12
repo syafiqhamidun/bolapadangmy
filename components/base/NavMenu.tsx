@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/popover"
 import LoginModal from "../aut/LoginModal"
  
-export function PopoverDemo() {
+export function NavMenu({session}:{session:object | null}) {
   return (
     <div className="flex justify-end mr-6">
         <Popover>
@@ -15,10 +15,20 @@ export function PopoverDemo() {
       </PopoverTrigger>
       <PopoverContent className="mr-6">
             <ul>
+                {session != null ? (<>
+                  <li>
+                   <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Dashboard</Button> 
+                </li>
+                <li>
+                   <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">SignOut</Button> 
+                </li>
+                
+                </> ):( <>
                 <LoginModal/>
                 <li>
                     <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Sign Out</Button>
                 </li>
+                </>)}
             </ul>
       </PopoverContent>
     </Popover>
