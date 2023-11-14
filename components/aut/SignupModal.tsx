@@ -122,7 +122,7 @@ export default function SignupModal() {
                   <div className="mt-5">
                     <Label htmlFor="cpassword">Confirm Password</Label>
                     <Input
-                      placeholder="Enter your cpassword"
+                      placeholder="Enter your password"
                       type="password"
                       id="cpassword"
                       {...register("password_confirmation")}
