@@ -4,6 +4,7 @@ import { Fragment } from 'react'
 import { NavMenu } from "./NavMenu";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers";
+import SignupModal from "../aut/SignupModal";
 
 export default async function NavBar() {
   const supabase = createServerComponentClient({cookies});

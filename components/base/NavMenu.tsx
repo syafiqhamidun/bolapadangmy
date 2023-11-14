@@ -5,6 +5,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import LoginModal from "../aut/LoginModal"
+import SignOutModal from "../aut/SignOutModal"
  
 export function NavMenu({session}:{session:object | null}) {
   return (
@@ -19,14 +20,12 @@ export function NavMenu({session}:{session:object | null}) {
                   <li>
                    <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Dashboard</Button> 
                 </li>
-                <li>
-                   <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">SignOut</Button> 
-                </li>
+                <SignOutModal/>
                 
                 </> ):( <>
                 <LoginModal/>
                 <li>
-                    <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Sign Out</Button>
+                    <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Hello</Button>
                 </li>
                 </>)}
             </ul>

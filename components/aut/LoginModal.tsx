@@ -1,5 +1,6 @@
 "use client";
 
+
 import {
     AlertDialog,
     AlertDialogContent,
@@ -14,7 +15,6 @@ import {
   import { Input } from "../ui/input";
   import Images from "next/image";
   import { useState } from "react";
-  import SignupModal from "./SignupModal";
   import { yupResolver } from "@hookform/resolvers/yup"
   import { LoginSchema, LoginType, RegisterType, registerSchema } from "@/validations/authSchemas";
   import { useForm } from "react-hook-form"
@@ -22,6 +22,7 @@ import {
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   import { useRouter } from "next/navigation";
+  import SignupModal from "./SignupModal";
   
 
  const LoginModal = () => {
@@ -42,8 +43,10 @@ import {
             const {data, error} = await supabase.auth.signInWithPassword({
                 email : payload.email,
                 password : payload.password,
-            });
-
+            })
+            router.refresh()
+            ;
+            setLoading(false);
             if (error) {
                 toast.error(error.message, {theme: "colored"})
             } else if (data.user) {
@@ -60,9 +63,9 @@ import {
                 </li>
             </AlertDialogTrigger>
 
-            <AlertDialogContent>
+            <AlertDialogContent asChild>
                 <AlertDialogHeader>
-                    <AlertDialogTitle asChild>
+                    <AlertDialogTitle >
                         <div className="flex justify-between items-center">
                             <span>Login</span>
                             <X className="cursor-pointer" onClick={() => setOpen(false)}/>
@@ -88,7 +91,7 @@ import {
                             <div className="mt-5">
                                 <Button className="bg-green-600 w-full" disabled={loading}>{loading ? "processing" : "Continue"}</Button>
                             </div>
-                            <h1 className="text-center my-2 text-xl font-bold"> -- OR --</h1>
+                            {/* <h1 className="text-center my-2 text-xl font-bold"> -- OR --</h1>
 
                            <Button variant={"outline"} className="w-full">
                                 <Images
@@ -99,18 +102,17 @@ import {
                                     className="mr-5"
                                 />
                                 Continue with Google
-                            </Button>
-
+                            </Button> */}
+                        
                             <div className="mt-5 flex">
                                 Dont have an account ?
                                 <SignupModal/>
                             </div>
                         </form>
+                        
                         </div>
                     </AlertDialogDescription>
-                    <div>
 
-                    </div>
                 </AlertDialogHeader>
 
             </AlertDialogContent>
