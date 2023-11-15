@@ -25,7 +25,7 @@ export function NavMenu({session}:{session:object | null}) {
                 </> ):( <>
                 <LoginModal/>
                 <li>
-                    <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Hello</Button>
+                    <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Home</Button>
                 </li>
                 </>)}
             </ul>
