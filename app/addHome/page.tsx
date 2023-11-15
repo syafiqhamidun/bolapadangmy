@@ -1,7 +1,7 @@
 import NavBar from '@/components/base/NavBar'
 import React from 'react'
 import Image from 'next/image'
-import HomeFont from '@/components/HomeFont'
+import HomeForm from '@/components/HomeForm'
 
 export default function AddHome() {
   return (
@@ -32,7 +32,7 @@ export default function AddHome() {
             </div>
           </div>
           <div className="">
-            <HomeFont/>
+            <HomeForm/>
           </div>
         </div>
       </div>

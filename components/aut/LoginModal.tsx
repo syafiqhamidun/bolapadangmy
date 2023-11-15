@@ -13,11 +13,10 @@ import {
   import { X } from "lucide-react";
   import { Label } from "../ui/label";
   import { Input } from "../ui/input";
-  import Images from "next/image";
   import { useState } from "react";
   import { yupResolver } from "@hookform/resolvers/yup"
-  import { LoginSchema, LoginType, RegisterType, registerSchema } from "@/validations/authSchemas";
   import { useForm } from "react-hook-form"
+  import { LoginSchema, LoginType, RegisterType, registerSchema } from "@/validations/authSchemas";
   import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
