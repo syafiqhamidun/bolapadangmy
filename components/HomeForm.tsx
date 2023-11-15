@@ -12,6 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import { AddHomeType, homeSchema } from '@/validations/homeSchema';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { generateRandomNumber } from '@/lib/utils';
 
 export default function HomeForm() {
     const [description, setDescription] = useState("")
@@ -46,6 +47,8 @@ export default function HomeForm() {
     const onSubmit = async (payload:AddHomeType) => {
         setLoading(true);
         const user = await supabase.auth.getUser()
+        const uniquePath = Date.now() + "_" + generateRandomNumber()
+        const {} = await supabase.storage.from("")
     };
 
   return (
