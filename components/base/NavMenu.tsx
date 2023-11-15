@@ -6,6 +6,8 @@ import {
 } from "@/components/ui/popover"
 import LoginModal from "../aut/LoginModal"
 import SignOutModal from "../aut/SignOutModal"
+import Link from "next/link"
+import AddHome from "@/app/add-home/page"
  
 export function NavMenu({session}:{session:object | null}) {
   return (
@@ -20,13 +22,19 @@ export function NavMenu({session}:{session:object | null}) {
                   <li>
                    <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Dashboard</Button> 
                 </li>
+                <li>
+                  <Link href={"/add-home"}>
+                      <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Add Home</Button> 
+                  </Link>
+                  
+                </li>
                 <SignOutModal/>
                 
                 </> ):( <>
                 <LoginModal/>
-                <li>
-                    <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Home</Button>
-                </li>
+                {/* <li>
+                    <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md"></Button>
+                </li> */}
                 </>)}
             </ul>
       </PopoverContent>

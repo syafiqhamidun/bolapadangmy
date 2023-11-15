@@ -11,10 +11,13 @@ import { useState, useEffect } from 'react';
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import { AddHomeType, homeSchema } from '@/validations/homeSchema';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 export default function HomeForm() {
     const [description, setDescription] = useState("")
     const [image, setImage] = useState<File | null>(null)
+    const [loading, setLoading] = useState<boolean>(false)
+    const supabase = createClientComponentClient()
 
 // Validation
     const {
@@ -40,8 +43,13 @@ export default function HomeForm() {
         }
     };
 
+    const onSubmit = async (payload:AddHomeType) => {
+        setLoading(true);
+        const user = await supabase.auth.getUser()
+    };
+
   return (
-    <form action="">
+    <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 mt-4 mx-40">
 
            {/* Field Name  */}
@@ -75,7 +83,7 @@ export default function HomeForm() {
             <div className="mt-6">
                 <Label htmlFor="contact_number" >Contact Number</Label>
                 <Input type="number" id="contact_number" placeholder="Enter Your Contact Number ..." {...register("contact_number")} />
-                <span className="text-red-500"></span>
+                <span className="text-red-500">{errors?.image?.message}</span>
             </div>
             <br />
 
@@ -95,7 +103,7 @@ export default function HomeForm() {
             </div>
 
             <div className='mt-6 mb-20'>
-                <Button className='bg-red-500 w-full ' >
+                <Button className='bg-red-500 w-full ' disabled={loading}>{loading ? "Processing ..." : "Submit"}
                     Submit
                 </Button>
             </div>
