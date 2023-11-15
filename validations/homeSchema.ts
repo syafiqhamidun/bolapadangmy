@@ -7,7 +7,7 @@ export const homeSchema = yup
         state: yup.string().min(5).max(50).required(),
         city: yup.string().min(5).max(50).required(),
         contact_number: yup.number().typeError("Numbers..."),
-        decription: yup.string().min(5).max(20000).required(),
+        description: yup.string().min(5).max(20000).required(),
         image: yup.mixed().test("image", "only JPEG, PNG, WEPB image are allowed", (file:any)=> {
             const isValid = file ?. type === "image/jpeg" || file?.type === "image/png" || file ?.type === "image/webp"
             return isValid

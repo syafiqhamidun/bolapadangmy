@@ -29,6 +29,7 @@ import {
         const [loading, setLoading] = useState<boolean>(false);
         const supabase = createClientComponentClient();
         const router = useRouter();
+        
         const {
             register,
             handleSubmit,
