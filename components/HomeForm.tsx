@@ -13,8 +13,13 @@ import { useForm } from "react-hook-form"
 import { AddHomeType, homeSchema } from '@/validations/homeSchema';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { generateRandomNumber } from '@/lib/utils';
+import Env from '@/config/env';
+import { toast } from "react-toastify";
+import { useRouter } from 'next/navigation';
+
 
 export default function HomeForm() {
+        const router = useRouter()
     const [description, setDescription] = useState("")
     const [image, setImage] = useState<File | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
@@ -48,7 +53,32 @@ export default function HomeForm() {
         setLoading(true);
         const user = await supabase.auth.getUser()
         const uniquePath = Date.now() + "_" + generateRandomNumber()
-        const {} = await supabase.storage.from("")
+        const {data:imageData, error: imgErr} = await supabase.storage.from(Env.BP_BUCKET).upload(uniquePath, image!)
+
+        if (imgErr) {
+            setLoading(false)
+            toast.error(imgErr.message, {theme:"colored"});
+            return;
+        }
+
+    const {data:homeData, error: homeErr} = await supabase.from("homes").insert({
+        user_id: user.data.user?.id,
+        title: payload.title,
+        state: payload.state,
+        city: payload.city,
+        description: payload.description,
+        contact_number: payload.contact_number,
+        image:imageData?.path
+    })
+
+        if(homeErr) {
+            setLoading(false)
+            toast.error(homeErr.message, {theme:"colored"});
+            return;
+        }
+
+        router.push("/dashboard?success=Home added successfully !")
+
     };
 
   return (
@@ -107,7 +137,7 @@ export default function HomeForm() {
 
             <div className='mt-6 mb-20'>
                 <Button className='bg-red-500 w-full ' disabled={loading}>{loading ? "Processing ..." : "Submit"}
-                    Submit
+                    
                 </Button>
             </div>
         </div>

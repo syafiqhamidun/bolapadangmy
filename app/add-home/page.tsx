@@ -2,10 +2,13 @@ import NavBar from '@/components/base/NavBar'
 import React from 'react'
 import Image from 'next/image'
 import HomeForm from '@/components/HomeForm'
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AddHome() {
   return (
     <div>
+      <ToastContainer/>
       <NavBar/>
       <div className=" mx-16 mt-10">
       <h1 className="text-black font-bold text-7xl text-center">MALAYSIAN AMATEUR FOOTBALL FIELD</h1>
