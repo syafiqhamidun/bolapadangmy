@@ -16,7 +16,7 @@ import { cookies } from 'next/headers'
 export default async function Dashboard() {
     const supabase = createServerComponentClient({cookies})
     const user = await supabase.auth.getUser()
-    const {data, error} = await supabase.from("homes").select("id, image, title, state, city, contact_number, created at")
+    const {data : homes} = await supabase.from("homes").select("id, image, title, state, city, contact_number, created at")
     .eq("user_id" , user.data.user?.id)
 
   return (
@@ -36,13 +36,14 @@ export default async function Dashboard() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow>
-                        <TableCell className="font-medium">INV001</TableCell>
-                        <TableCell>Paid</TableCell>
-                        <TableCell>Credit Card</TableCell>
-                        <TableCell className="text-right">$250.00</TableCell>
-                        </TableRow>
-
+                    {homes && homes.map((item) => (
+                                            <TableRow>
+                                            <TableCell>{item.state}</TableCell>
+                                            <TableCell>Paid</TableCell>
+                                            <TableCell>Credit Card</TableCell>
+                                            <TableCell className="text-right">$250.00</TableCell>
+                                            </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </div>
