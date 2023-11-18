@@ -36,14 +36,14 @@ export default async function Dashboard() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {homes && homes.map((item) => (
-                                            <TableRow>
-                                            <TableCell>{item.state}</TableCell>
-                                            <TableCell>Paid</TableCell>
-                                            <TableCell>Credit Card</TableCell>
-                                            <TableCell className="text-right">$250.00</TableCell>
-                                            </TableRow>
-                    ))}
+                {homes.map((item) => (
+                <TableRow key={item.state}>
+                  <TableCell>{item.city}</TableCell>
+                  <TableCell>{item.title}</TableCell>
+                  <TableCell>{item.image}</TableCell>
+                  <TableCell>{item.price}</TableCell>
+                </TableRow>
+              ))}
                 </TableBody>
             </Table>
         </div>
