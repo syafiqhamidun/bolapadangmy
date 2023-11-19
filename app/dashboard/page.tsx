@@ -19,7 +19,7 @@ import { Trash } from 'lucide-react'
 import { Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import DeleteHomeButton from '@/components/DeleteHome'
-import { Item } from '@radix-ui/react-dropdown-menu'
+import Toast from '@/components/common/toast'
 
 export default async function dashboard() {
   const supabase =  createServerComponentClient({cookies})
@@ -30,6 +30,7 @@ export default async function dashboard() {
   return (
     <div>
       <NavBar/>
+      <Toast/>
       <div className='container mt-10'>
       <Table>
         <TableCaption>A list of your fields.</TableCaption>

@@ -16,14 +16,20 @@ import {
   import { Trash } from 'lucide-react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { toast } from "react-toastify";
+import { useRouter } from 'next/navigation';
   
 
 export default function DeleteHomeButton({id} : {id:number}) {
     const supabase = createClientComponentClient()
+    const router = useRouter();
     const deleteHome = async () => {
         const {error} = await supabase.from("homes").delete().eq("id", id)
-        toast.error(error?.message, {theme: "colored"})
-    }
+        if(error) {
+            toast.error(error?.message, {theme: "colored"});
+            return;
+        }
+        router.refresh()
+    };
 
   return (
     <div>

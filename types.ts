@@ -10,12 +10,11 @@ type CategoriesType = {
   
   type HomesType = {
     id: any;
-    price: any;
+    contact_number: any;
     title: any;
     image: any;
-    city: any;
     state: any;
-    country: any;
+    city: any;
     description: any;
     user_id: any;
     created_at: any;
