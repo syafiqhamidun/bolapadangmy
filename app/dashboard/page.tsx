@@ -10,31 +10,69 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import NavBar from '@/components/base/NavBar'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
+import { table } from 'console'
+import { getImageUrl } from '@/lib/utils'
+import Image from 'next/image'
+import { Trash } from 'lucide-react'
+import { Eye } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
+export default async function dashboard() {
+  const supabase =  createServerComponentClient({cookies})
+  const user = await supabase.auth.getUser()
+  const {data:homes , error} = await supabase.from("homes").select("state , image , title , city , contact_number , description , created_at")
+  .eq("user_id" , user.data.user?.id)
 
-export default function dashboard() {
   return (
     <div>
       <NavBar/>
+      <div className='container mt-10'>
       <Table>
-  <TableCaption>A list of your recent invoices.</TableCaption>
-  <TableHeader>
-    <TableRow>
-      <TableHead className="w-[100px]">Invoice</TableHead>
-      <TableHead>Status</TableHead>
-      <TableHead>Method</TableHead>
-      <TableHead className="text-right">Amount</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      <TableCell className="font-medium">INV001</TableCell>
-      <TableCell>Paid</TableCell>
-      <TableCell>Credit Card</TableCell>
-      <TableCell className="text-right">$250.00</TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
+        <TableCaption>A list of your fields.</TableCaption>
+        <TableHeader>
+        <TableRow>
+          <TableHead>State</TableHead>
+          <TableHead>City</TableHead>
+          <TableHead>Title</TableHead>
+          <TableHead>Phone Number</TableHead>
+          <TableHead>Image</TableHead>
+          <TableHead>Action</TableHead>
+        </TableRow>
+        </TableHeader>
+        <TableBody>
+          {homes && 
+            homes.map((item) => (
+                      <TableRow key={""}>
+                      <TableCell>{item.state}</TableCell>
+                      <TableCell>{item.city}</TableCell>
+                      <TableCell>{item.title}</TableCell>
+                      <TableCell>{item.contact_number}</TableCell>
+                      <TableCell>
+                          <Image 
+                              className='h-12 w-12 rounded-full'
+                              src={getImageUrl(item.image)}
+                              width={60} 
+                              height={60} 
+                              alt="home_img" />
+                      </TableCell>
+                      <TableCell>
+                        <div className='flex space-x-3'>
+                          <Button variant={"destructive"} size={"icon"} className=''>
+                            <Trash/>
+                          </Button>
+
+                          <Button size={"icon"} className='bg-green-600'>
+                            <Eye/>
+                          </Button>  
+                        </div>
+                      </TableCell>
+                      </TableRow>
+          ))}
+          </TableBody>
+      </Table>
+      </div>
 
     </div>
   )
