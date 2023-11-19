@@ -18,11 +18,13 @@ import Image from 'next/image'
 import { Trash } from 'lucide-react'
 import { Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import DeleteHomeButton from '@/components/DeleteHome'
+import { Item } from '@radix-ui/react-dropdown-menu'
 
 export default async function dashboard() {
   const supabase =  createServerComponentClient({cookies})
   const user = await supabase.auth.getUser()
-  const {data:homes , error} = await supabase.from("homes").select("state , image , title , city , contact_number , description , created_at")
+  const {data:homes , error} = await supabase.from("homes").select("id , state , image , title , city , contact_number , description , created_at")
   .eq("user_id" , user.data.user?.id)
 
   return (
@@ -44,7 +46,7 @@ export default async function dashboard() {
         <TableBody>
           {homes && 
             homes.map((item) => (
-                      <TableRow key={""}>
+                      <TableRow key={item.id}>
                       <TableCell>{item.state}</TableCell>
                       <TableCell>{item.city}</TableCell>
                       <TableCell>{item.title}</TableCell>
@@ -59,9 +61,7 @@ export default async function dashboard() {
                       </TableCell>
                       <TableCell>
                         <div className='flex space-x-3'>
-                          <Button variant={"destructive"} size={"icon"} className=''>
-                            <Trash/>
-                          </Button>
+                          <DeleteHomeButton id={item.id} />
 
                           <Button size={"icon"} className='bg-green-600'>
                             <Eye/>
