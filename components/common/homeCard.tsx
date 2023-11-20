@@ -13,11 +13,12 @@ export default function HomeCard({ home }: { home: any }){
                 src={getImageUrl(home.image)}
                 width={100} 
                 height={100} 
-                alt={home.image} />
+                alt={home.image} 
+                unoptimized/>
 
+                <p className='text-xl font-bold'>{home.title}</p>
                 <p>{home.city} , {home.state}</p>
-                <p>{home.title}</p>
-                <p>{home.contact_number}</p>
+                <p>0{home.contact_number}</p>
 
         </div>
     </Link>

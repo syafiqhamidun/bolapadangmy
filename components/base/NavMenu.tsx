@@ -20,7 +20,10 @@ export function NavMenu({session}:{session:object | null}) {
             <ul>
                 {session != null ? (<>
                   <li>
-                   <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Dashboard</Button> 
+                    <Link href={"/dashboard"}>
+                      <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Dashboard</Button>      
+                    </Link>
+
                 </li>
                 <li>
                   <Link href={"/add-home"}>

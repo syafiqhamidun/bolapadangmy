@@ -15,12 +15,14 @@ export default async function Home() {
       <Toast/>
       <NavBar/>
 
+      <div className="mt-20">
+        {homes && homes.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 px-10">
+            {homes.map((item) => <HomeCard key={""} home={item} />)}
+          </div>
+        )}
+      </div>
 
-      {homes && homes.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 px-10">
-          {homes.map((item) => <HomeCard key={""} home={item} />)}
-        </div>
-      )}
 
 
     </div>

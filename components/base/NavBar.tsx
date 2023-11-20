@@ -1,10 +1,9 @@
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { Fragment } from 'react'
 import { NavMenu } from "./NavMenu";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers";
-import SignupModal from "../aut/SignupModal";
+import Link from "next/link";
 
 export default async function NavBar() {
   const supabase = createServerComponentClient({cookies});
@@ -16,9 +15,12 @@ export default async function NavBar() {
 
     {/* Left */}
       <div className="flex items-center h-10 my-auto">
-        <Button variant={"miss"} className=" w-full md:w-auto py-2 rounded-md cursor-pointer flex-row items-center text-xl font-exo font-semibold">
-            BolaPadang.MY
-        </Button>
+        <Link href={"/"} className="cursor-pointer">
+          <Button variant={"miss"} className=" w-full md:w-auto py-2 rounded-md cursor-pointer flex-row items-center text-xl font-exo font-semibold">
+              BolaPadang.MY
+          </Button>
+        </Link>
+
       </div>
 
     {/* Middle */}
