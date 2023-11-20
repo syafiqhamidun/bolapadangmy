@@ -1,8 +1,10 @@
+
 import NavBar from "@/components/base/NavBar"
 import Toast from "@/components/common/toast"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import HomeCard from "@/components/common/homeCard"
+
 
 export default async function Home() {
   const supabase = createServerComponentClient({cookies})
@@ -13,9 +15,15 @@ export default async function Home() {
       <Toast/>
       <NavBar/>
 
-{/* Load the home card */}
-      {homes && homes.length > 0 && 
-      homes.map((item) => (<HomeCard home={item} key={item.id} />) )}
+
+      {homes && homes.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 px-10">
+          {homes.map((item) => <HomeCard key={""} home={item} />)}
+        </div>
+      )}
+
+
     </div>
   )
 }
+
