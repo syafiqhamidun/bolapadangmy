@@ -6,7 +6,7 @@ import { cookies } from "next/headers"
 import HomeCard from "@/components/common/homeCard"
 
 
-export default async function Home() {
+export default async function Home({searchParams}:{searchParams?:{[key:string]:string | undefined}}) {
   const supabase = createServerComponentClient({cookies})
   const {data:homes , error} = await supabase.from("homes").select("id , title , image , state , city , contact_number , users (metadata->name)");
 

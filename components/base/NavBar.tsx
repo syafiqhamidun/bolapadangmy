@@ -4,6 +4,7 @@ import { NavMenu } from "./NavMenu";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers";
 import Link from "next/link";
+import SearchPop from "../common/SearchPop";
 
 export default async function NavBar() {
   const supabase = createServerComponentClient({cookies});
@@ -20,15 +21,11 @@ export default async function NavBar() {
               BolaPadang.MY
           </Button>
         </Link>
-
       </div>
 
     {/* Middle */}
-      <div className=" flex my-auto w-full gap-1">
-        <Input type="search" placeholder="Search" />
-          <Button type="submit" className="hidden md:inline-flex">
-              Search
-          </Button>
+      <div className="my-auto w-full gap-1">
+        <SearchPop session={session.data?.session}/>
       </div>
 
     {/* Right */}
