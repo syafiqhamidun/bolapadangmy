@@ -8,7 +8,15 @@ import HomeCard from "@/components/common/homeCard"
 
 export default async function Home({searchParams}:{searchParams?:{[key:string]:string | undefined}}) {
   const supabase = createServerComponentClient({cookies})
-  const {data:homes , error} = await supabase.from("homes").select("id , title , image , state , city , contact_number , users (metadata->name)");
+  const query = supabase
+    .from("homes")
+    .select("id , title , image , state , city , contact_number , users (metadata->name)");
+
+    if(searchParams?.state) {
+      query.ilike ("state" , `%${searchParams?.state}%` )
+    }
+  
+  const {data:homes , error} = await query;
 
   return (
     <div>

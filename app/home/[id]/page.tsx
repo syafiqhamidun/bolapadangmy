@@ -21,7 +21,9 @@ export default async function FindHome({params}:{params:{id:number}}) {
                 width={100} 
                 height={100} 
                 alt={"home_img"} 
-                unoptimized/>
+                unoptimized
+                priority
+                />
 
             <h1 className='text-2xl font-bold mt-3'>{home?.title}</h1>
             <p className='mt-2'>

@@ -14,7 +14,9 @@ export default function HomeCard({ home }: { home: any }){
                 width={100} 
                 height={100} 
                 alt={home.image} 
-                unoptimized/>
+                unoptimized
+                priority
+                />
 
                 <p className='text-xl font-bold'>{home.title}</p>
                 <p>{home.city} , {home.state}</p>

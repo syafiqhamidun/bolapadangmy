@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Button } from '../ui/button'
 
 export default function SearchSheetNav({session , searchInputCallback} : {session:any , searchInputCallback:(value:string)=> void}) {
+  
   return (
     <div className='flex justify-between items-center px-10'>
       <div className="flex items-center h-10 my-auto">

@@ -5,23 +5,28 @@ import {
     Sheet,
     SheetContent,
     SheetDescription,
-    SheetHeader,
+    SheetHeader,  
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet"
   import { Button } from '../ui/button'
   import { Input } from '../ui/input'
   import SearchSheetNav from '../base/SearchSheetNav'
+  import { useRouter } from 'next/navigation'
 
 export default function SearchPop({session}: {session:any}) {
   const [open, setOpen] = useState(false);
-
-
+  const router = useRouter()
   const [search, setSearch] = useState<string>("");
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
+  const handleSubmit = () => {
+    // console.log("search value is", search)
+    router.replace(`/?state=${search}`);
+    setOpen(() => false);
   };
+
+//   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//     setSearch(event.target.value);
+//   };
 
   return (
     <div>
@@ -39,7 +44,7 @@ export default function SearchPop({session}: {session:any}) {
                 <SheetTitle>
                     <SearchSheetNav session={session} searchInputCallback={setSearch}/>
                     <div className='flex items-center justify-center space-x-4 my-5'>
-                        <Button className='bg-red-500'>
+                        <Button className='bg-red-500' onClick={handleSubmit}>
                             Search
                         </Button>
                         <Button variant={"outline"} onClick={() => setOpen(false)}>
