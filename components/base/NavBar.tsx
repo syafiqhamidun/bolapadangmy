@@ -15,7 +15,7 @@ export default async function NavBar() {
   <header className="sticky top-0 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
 
     {/* Left */}
-      <div className="flex items-center h-10 my-auto">
+      <div className=" items-center h-10 my-auto hidden sm:block">
         <Link href={"/"} className="cursor-pointer">
           <Button variant={"miss"} className=" w-full md:w-auto py-2 rounded-md cursor-pointer flex-row items-center text-xl font-exo font-semibold">
               BolaPadang.MY
@@ -29,7 +29,7 @@ export default async function NavBar() {
       </div>
 
     {/* Right */}
-    <div>
+    <div className="">
       <NavMenu session={session.data?.session} />
     </div>
 

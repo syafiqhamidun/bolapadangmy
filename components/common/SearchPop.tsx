@@ -12,12 +12,18 @@ import {
   import { Button } from '../ui/button'
   import { Input } from '../ui/input'
   import SearchSheetNav from '../base/SearchSheetNav'
-  import { useRouter } from 'next/navigation'
+  import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function SearchPop({session}: {session:any}) {
   const [open, setOpen] = useState(false);
   const router = useRouter()
+  const params = useSearchParams()
+
   const [search, setSearch] = useState<string>("");
+  const [searchParams, setSearchParams] = useState({
+    state: "",
+  });
+
   const handleSubmit = () => {
     // console.log("search value is", search)
     router.replace(`/?state=${search}`);
