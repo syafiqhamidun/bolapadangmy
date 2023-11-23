@@ -12,35 +12,16 @@ import {
   import { Button } from '../ui/button'
   import { Input } from '../ui/input'
   import SearchSheetNav from '../base/SearchSheetNav'
-  import { useRouter } from 'next/router'
 
 export default function SearchPop({session}: {session:any}) {
-    // const router = useRouter();
-//   const params = useSearchParams();
   const [open, setOpen] = useState(false);
+
+
   const [search, setSearch] = useState<string>("");
-  const [searchParams, setSearchParams] = useState<SearchParamsType>({
-    country: "Anywhere",
-    weeks: "",
-  });
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
-
-//   const handleDateChange = (item: any) => {
-//     setDate([item.selection]);
-//   };
-
-//   const handleSubmit = () => {
-//     const startDate = format(date?.[0].startDate, "dd-MM-y");
-//     const endDate = format(date?.[0].endDate, "dd-MM-y");
-
-//     router.replace(
-//       `/?country=${search}&startDate=${startDate}&endDate=${endDate}`
-//     );
-//     setOpen(false);
-//   };
 
   return (
     <div>
@@ -61,14 +42,11 @@ export default function SearchPop({session}: {session:any}) {
                         <Button className='bg-red-500'>
                             Search
                         </Button>
-                        <Button variant={"outline"}>
+                        <Button variant={"outline"} onClick={() => setOpen(false)}>
                             Close
                         </Button>
                     </div>
-                </SheetTitle>
-                <SheetDescription>
-
-                </SheetDescription>
+                </SheetTitle> 
             </SheetHeader>
             </SheetContent>
         </Sheet>
