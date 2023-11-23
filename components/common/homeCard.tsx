@@ -9,7 +9,7 @@ export default function HomeCard({ home }: { home: any }){
     <Link href={`/home/${home.id}`}>
         <div>
             <Image 
-                className="w-full h-[300px] rounded-xl object-cover object-center"
+                className="w-full h-[300px] rounded-xl object-cover object-center blur-none"
                 src={getImageUrl(home.image)}
                 width={100} 
                 height={100} 
@@ -18,9 +18,9 @@ export default function HomeCard({ home }: { home: any }){
                 priority
                 />
 
-                <p className='text-xl font-bold'>{home.title}</p>
+                <p className='text-xl font-bold mt-3'>{home.title}</p>
                 <p>{home.city} , {home.state}</p>
-                <p>0{home.contact_number}</p>
+                {/* <p>0{home.contact_number}</p> */}
 
         </div>
     </Link>

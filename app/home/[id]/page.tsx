@@ -36,7 +36,7 @@ export default async function FindHome({params}:{params:{id:number}}) {
             {/* <h1 className='mt-3 text-blue-800 text-xl font-bold'>Created by {home?.users?.name!}</h1> */}
 
             <h1 className='mt-10 underline text-xl font-semibold'>ABOUT US</h1>
-            <div className='mt-2' dangerouslySetInnerHTML={{__html:home?.description}}>
+            <div className='mt-2 pb-14' dangerouslySetInnerHTML={{__html:home?.description}}>
                 
             </div>
         </div>
