@@ -64,4 +64,8 @@ export const states: Array<StatesType> = [
         label: "Labuan",
         value: "Labuan",
     },
+    {
+        label: "Terengganu",
+        value: "Terengganu"
+    },
   ];

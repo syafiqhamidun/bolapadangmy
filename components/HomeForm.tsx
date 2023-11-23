@@ -96,7 +96,7 @@ export default function HomeForm() {
             {/* States */}
             <div className="mt-6">
                 <Label htmlFor="state">State</Label>
-                <select id="state" className="rounded-md outline-red-400 h-9 px-3 py-2 w-full border flex " {...register("state")}>
+                <select id="state" className="rounded-md outline-red-400 h-10 px-3 py-2 w-full border flex " {...register("state")}>
                     <option value=""> -- Select States -- </option>
                     {states.map((item) => <option value={item.value} key={item.value}>{item.label}</option>)}
                 </select>

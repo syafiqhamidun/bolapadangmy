@@ -15,6 +15,12 @@ export default async function Home({searchParams}:{searchParams?:{[key:string]:s
     if(searchParams?.state) {
       query.ilike ("state" , `%${searchParams?.state}%` )
     }
+    // if(searchParams?.city) {
+    //   query.ilike ("city" , `%${searchParams?.city}%` )
+    // }
+    // if(searchParams?.title) {
+    //   query.ilike ("title" , `%${searchParams?.title}%` )
+    // }
   
   const {data:homes , error} = await query;
 
@@ -30,9 +36,11 @@ export default async function Home({searchParams}:{searchParams?:{[key:string]:s
           </div>
         )}
       </div>
-
-
-
+        {homes && homes.length < 0 && (
+          <div>
+            <h1 className="text-2xl text-red-500">No Field Found</h1>
+          </div>
+        )}
     </div>
   )
 }

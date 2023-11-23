@@ -20,7 +20,7 @@ export default function AddHome() {
             </h1>
 
             <Image 
-                src="/Users/syafiqhamidun/Coding/pasarweb/images/padangbola.jpeg" 
+                src="/images/field.jpeg" 
                 width={300} 
                 height={300}
                 alt= "football-field"
