@@ -12,12 +12,12 @@ export default async function NavBar() {
   
   return ( 
   
-  <header className="sticky top-0 grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 bg-white shadow-md p-5 md:px-10 gap-6">
+  <header className="sticky top-0 grid grid-cols-3 lg:grid-cols-3 bg-white shadow-md p-5 md:px-10 gap-7">
 
     {/* Left */}
-      <div className="w-1/8 h-10 my-auto sm:justify-start ">
+      <div className="w-1/8 h-10 my-auto sm:justify-start">
         <Link href={"/"} className="cursor-pointer">
-          <Button variant={"miss"} className=" py-2 rounded-md cursor-pointer flex-row items-center text-xl font-exo font-semibold">
+          <Button variant={"miss"} className=" w-26 md:w-1/2 lg:w-1/2 py-2 rounded-md cursor-pointer flex-row items-center text-xs lg:text-xl md:text-xl font-exo font-semibold">
               BolaPadang.MY
           </Button>
         </Link>

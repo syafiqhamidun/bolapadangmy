@@ -83,7 +83,7 @@ export default function HomeForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-        <div className=" mt-5 container w-1/2">
+        <div className=" mt-5 md:container lg:container lg:w-1/2 md:w-1/2">
 
            {/* Field Name  */}
             <div className="mt-8">

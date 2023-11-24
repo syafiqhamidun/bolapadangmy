@@ -32,7 +32,7 @@ export default async function dashboard() {
     <div>
       <NavBar/>
       <Toast/>
-      <div className='container mt-10'>
+      <div className='mx-5 lg:container mt-10'>
       <Table>
         <TableCaption>A list of your fields.</TableCaption>
         <TableHeader>

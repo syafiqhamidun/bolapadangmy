@@ -34,7 +34,7 @@ export default function SearchPop({session}: {session:any}) {
         <Sheet open={open}>
             <SheetTrigger asChild>
             <div  className=" flex w-full my-auto gap-1 cursor-pointer" onClick={() => setOpen(true)}>
-                <Input type="search" placeholder="Search" />
+                <Input type="search" placeholder="Search" className='text-center md:text-start lg:text-left'/>
                     <Button type="submit" className="hidden md:inline-flex">
                     Search
                     </Button>

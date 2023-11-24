@@ -18,7 +18,7 @@ export default function SearchSheetNav({session , searchInputCallback} : {sessio
       </div> */}
 
       <div  className='w-full md:w-1/3 rounded-md p-5' >
-        <Input placeholder='Search ....' onChange={(event)=> searchInputCallback(event.target.value)}/>
+        <Input placeholder='Search by state ...' onChange={(event)=> searchInputCallback(event.target.value)}/>
       </div>
 
         {/* <div className='md:flex items-center space-x-4' placeholder='Search by State'>
