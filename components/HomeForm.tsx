@@ -83,12 +83,12 @@ export default function HomeForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-1 mt-4 mx-40">
+        <div className=" mt-5 container w-1/2">
 
            {/* Field Name  */}
             <div className="mt-8">
                 <Label htmlFor="title" >Field Name</Label>
-                <Input id="title" placeholder="Enter Your Field Name ..." {...register("title")}/>
+                <Input className='sm:flex' id="title" placeholder="Enter Your Field Name ..." {...register("title")}/>
                 <span className="text-red-500">{errors?. title?.message}</span>
             </div>
             <br />

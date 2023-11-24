@@ -25,16 +25,9 @@ export default function SearchPop({session}: {session:any}) {
   });
 
   const handleSubmit = () => {
-    // console.log("search value is", search)
     router.replace(`/?state=${search}`);
-    // router.replace(`/?city=${search}`);
-    // router.replace(`/?title=${search}`);
     setOpen(() => false);
   };
-
-//   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     setSearch(event.target.value);
-//   };
 
   return (
     <div>
