@@ -7,10 +7,11 @@ import { Button } from '../ui/button'
 export default function SearchSheetNav({session , searchInputCallback} : {session:any , searchInputCallback:(value:string)=> void}) {
   
   return (
-    <div className='flex justify-between items-center px-10'>
+    <div className='grid'>
+      <div className='flex justify-between items-center px-10'>
       <div className="flex items-center h-10 my-auto">
         <Link href={"/"} className="cursor-pointer">
-          <Button variant={"miss"} className=" w-full md:w-auto py-2 rounded-md cursor-pointer flex-row items-center text-xl font-exo font-semibold">
+          <Button variant={"miss"} className="w-full md:w-auto py-2 rounded-md cursor-pointer flex-row items-center text-xl font-exo font-semibold">
               BolaPadang.MY
           </Button>
         </Link>
@@ -24,5 +25,7 @@ export default function SearchSheetNav({session , searchInputCallback} : {sessio
           <NavMenu session={session} />
         </div>
     </div>
+    </div>
+
   )
 }

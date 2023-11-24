@@ -24,7 +24,7 @@ export default async function NavBar() {
       </div>
 
     {/* Middle */}
-      <div className="my-auto w-full gap-1">
+      <div className="my-auto w-auto gap-1">
         <SearchPop session={session.data?.session}/>
       </div>
 
