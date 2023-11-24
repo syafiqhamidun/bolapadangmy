@@ -88,7 +88,7 @@ export default function HomeForm() {
            {/* Field Name  */}
             <div className="mt-8">
                 <Label htmlFor="title" >Field Name</Label>
-                <Input className='sm:flex' id="title" placeholder="Enter Your Field Name ..." {...register("title")}/>
+                <Input className='' id="title" placeholder="Enter Your Field Name ..." {...register("title")}/>
                 <span className="text-red-500">{errors?. title?.message}</span>
             </div>
             <br />
