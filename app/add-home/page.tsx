@@ -1,6 +1,5 @@
 import NavBar from '@/components/base/NavBar'
 import React from 'react'
-import Image from 'next/image'
 import HomeForm from '@/components/HomeForm'
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
