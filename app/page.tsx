@@ -29,7 +29,7 @@ export default async function Home({searchParams}:{searchParams?:{[key:string]:s
       <Toast/>
       <NavBar/>
 
-      <div className="mt-20">
+      <div className="mt-20 z-10">
         {homes && homes.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 px-10">
             {homes.map((item) => <HomeCard key={""} home={item} />)}

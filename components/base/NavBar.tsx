@@ -1,5 +1,4 @@
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import { NavMenu } from "./NavMenu";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers";
@@ -12,7 +11,7 @@ export default async function NavBar() {
   
   return ( 
   
-  <header className="sticky top-0 grid grid-cols-3 lg:grid-cols-3 bg-white shadow-md p-5 md:px-10 gap-7">
+  <header className="sticky top-0 grid grid-cols-3 lg:grid-cols-3 bg-white shadow-md p-5 md:px-10 gap-7 z-50">
 
     {/* Left */}
       <div className="w-1/8 h-10 my-auto sm:justify-start">
@@ -29,7 +28,7 @@ export default async function NavBar() {
       </div>
 
     {/* Right */}
-    <div className="">
+    <div>
       <NavMenu session={session.data?.session} />
     </div>
 

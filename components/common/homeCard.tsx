@@ -6,7 +6,7 @@ import { getImageUrl } from '@/lib/utils';
 export default function HomeCard({ home }: { home: any }){
 
   return (
-    <Link href={`/home/${home.id}`}>
+    <Link href={`/home/${home.id}`} className='z-10'>
         <div>
             <Image 
                 className="w-full h-[300px] rounded-xl object-cover object-center blur-none"
