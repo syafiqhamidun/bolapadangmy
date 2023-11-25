@@ -18,13 +18,6 @@ export default function AddHome() {
             <h1 className="text-black font-semibold text-xl mb-3 mt-14 justify-center flex text-center">
               The first online football field service in Malaysia
             </h1>
-{/* 
-            <Image 
-                src="/images/field.jpeg" 
-                width={300} 
-                height={300}
-                alt= "football-field"
-                /> */}
 
             <div className="flex space-x-4 items-center mt-10 justify-center text-center">
               <strong className="text-3xl">FOOTBALL IS FOR EVERYONE</strong>
