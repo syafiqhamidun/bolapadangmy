@@ -3,6 +3,7 @@ import React from 'react'
 import HomeForm from '@/components/HomeForm'
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Image from 'next/image';
 
 export default function AddHome() {
   return (
@@ -24,6 +25,15 @@ export default function AddHome() {
 
             <div className="hidden md:grid grid-cols-2 gap-2 mt-5">
 
+            </div>
+            <div>
+              <Image 
+              src="/field.jpeg"
+              alt="field"
+              width={300}
+              height={300}
+
+              />
             </div>
           </div>
           <div className="text-center">
