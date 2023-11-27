@@ -1,4 +1,3 @@
-
 import React from 'react'
 import {
   Table,
@@ -12,10 +11,8 @@ import {
 import NavBar from '@/components/base/NavBar'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { table } from 'console'
 import { getImageUrl } from '@/lib/utils'
 import Image from 'next/image'
-import { Trash } from 'lucide-react'
 import { Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import DeleteHomeButton from '@/components/DeleteHome'
