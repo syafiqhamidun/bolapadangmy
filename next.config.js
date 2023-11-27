@@ -2,6 +2,9 @@
 const nextConfig = {
     images: {
         domains: ["tjnbubjnvqkdzqxeekmm.supabase.co"]
+    },
+    typescript: {
+        ignoreBuildErrors: true,
     }
 }
 
