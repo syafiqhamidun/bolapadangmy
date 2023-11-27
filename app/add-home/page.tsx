@@ -26,7 +26,7 @@ export default function AddHome() {
             <div className="hidden md:grid grid-cols-2 gap-2 mt-5">
 
             </div>
-            <div>
+            {/* <div>
               <Image 
               src="/field.jpeg"
               alt="field"
@@ -34,7 +34,7 @@ export default function AddHome() {
               height={300}
 
               />
-            </div>
+            </div> */}
           </div>
           <div className="text-center">
             <HomeForm/>
