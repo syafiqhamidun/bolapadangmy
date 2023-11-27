@@ -3,7 +3,6 @@ import React from 'react'
 import HomeForm from '@/components/HomeForm'
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Image from 'next/image';
 
 export default function AddHome() {
   return (
