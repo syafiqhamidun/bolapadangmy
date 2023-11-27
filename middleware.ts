@@ -1,4 +1,4 @@
-import { createMiddlewareClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
 
 import type { NextRequest } from 'next/server'
