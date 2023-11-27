@@ -7,7 +7,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'BolaPadang.MY',
   description: 'Football field finder',
-}
+};
+
+export const dynamic = "force-dynamic";
 
 export default function RootLayout({
   children,
