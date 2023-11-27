@@ -27,7 +27,7 @@ export function NavMenu({session}:{session:object | null}) {
                 </li>
                 <li>
                   <Link href={"/add-home"}>
-                      <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Add Home</Button> 
+                      <Button variant={"miss"} className="w-full hover:bg-gray-300 flex rounded-md">Add Field</Button> 
                   </Link>
                   
                 </li>
