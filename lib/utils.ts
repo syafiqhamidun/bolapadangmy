@@ -1,6 +1,5 @@
 import Env from "@/config/env";
 import { type ClassValue, clsx } from "clsx"
-import Image from "next/image";
 import { twMerge } from "tailwind-merge"
  
 export function cn(...inputs: ClassValue[]) {
