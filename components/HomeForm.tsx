@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form"
 import { AddHomeType, homeSchema } from '@/validations/homeSchema';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { generateRandomNumber } from '@/lib/utils';
-import Env from '@/config/env';
+import envs from '@/config/env';
 import { toast } from "react-toastify";
 import { useRouter } from 'next/navigation';
 
@@ -53,7 +53,7 @@ export default function HomeForm() {
         setLoading(true);
         const user = await supabase.auth.getUser()
         const uniquePath = Date.now() + "_" + generateRandomNumber()
-        const {data:imageData, error: imgErr} = await supabase.storage.from(Env.BP_BUCKET).upload(uniquePath, image!)
+        const {data:imageData, error: imgErr} = await supabase.storage.from(envs.BP_BUCKET).upload(uniquePath, image!)
 
         if (imgErr) {
             setLoading(false)

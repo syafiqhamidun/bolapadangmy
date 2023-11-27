@@ -1,4 +1,4 @@
-import Env from "@/config/env";
+import envs from "@/config/env";
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
  
@@ -18,7 +18,7 @@ export function generateRandomNumber(): number {
 }
 
 export function getImageUrl(image: string): string {
-  return `${Env.SUPABASE_URL}/storage/v1/object/public/${Env.BP_BUCKET}/${image}`;
+  return `${envs.SUPABASE_URL}/storage/v1/object/public/${envs.BP_BUCKET}/${image}`;
 }
 
 export function capitalizeFirstLetter(data:string):string {
