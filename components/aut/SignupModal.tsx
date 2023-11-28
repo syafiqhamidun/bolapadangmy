@@ -85,7 +85,7 @@ export default function SignupModal() {
             <AlertDialogDescription asChild>
               <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <h1 className="text-lg font-bold">Welcome to My.Pasar</h1>
+                  <h1 className="text-lg font-bold">Welcome to BolaPadang.MY</h1>
                   <div className="mt-5">
                     <Label htmlFor="name">Name</Label>
                     <Input

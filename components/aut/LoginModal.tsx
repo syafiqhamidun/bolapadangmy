@@ -75,7 +75,7 @@ import {
                         <div>
                             <ToastContainer/>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <h1 className="text-lg font-bold text-black">Welcome to MY.PASAR</h1>
+                            <h1 className="text-lg font-bold text-black">Welcome to BolaPadang.MY</h1>
                             <div className="mt-5">
                                 <Label htmlFor="email">Email</Label>
                                 <Input placeholder="Enter your email" id="email" type="email" {...register("email")} />
