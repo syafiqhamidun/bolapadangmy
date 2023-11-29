@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import SearchPop from "../common/SearchPop";
 import Image from "next/image";
-import DarkMode from "../common/darkMode";
 
 export default async function NavBar() {
   const supabase = createServerComponentClient({cookies});
@@ -32,7 +31,7 @@ export default async function NavBar() {
 
     {/* Right */}
     <div>
-      {/* <DarkMode/> */}
+
       <NavMenu session={session.data?.session} />
     </div>
 
