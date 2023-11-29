@@ -29,6 +29,7 @@ export default async function Home({searchParams}:{searchParams?:{[key:string]:s
       <Toast/>
       <NavBar/>
 
+      <main>
       <div className="mt-20 z-10">
         {homes && homes.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 px-10">
@@ -41,6 +42,8 @@ export default async function Home({searchParams}:{searchParams?:{[key:string]:s
             <h1 className="text-2xl text-red-500">No Field Found</h1>
           </div>
         )}
+      </main>
+
     </div>
   )
 }

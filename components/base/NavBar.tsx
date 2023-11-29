@@ -4,6 +4,8 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers";
 import Link from "next/link";
 import SearchPop from "../common/SearchPop";
+import Image from "next/image";
+import DarkMode from "../common/darkMode";
 
 export default async function NavBar() {
   const supabase = createServerComponentClient({cookies});
@@ -15,8 +17,9 @@ export default async function NavBar() {
 
     {/* Left */}
       <div className="w-1/8 h-10 my-auto sm:justify-start">
-        <Link href={"/"} className="cursor-pointer">
-          <Button variant={"miss"} className=" w-26 md:w-1/2 lg:w-1/2 py-2 rounded-md cursor-pointer flex-row items-center text-xs lg:text-xl md:text-xl font-exo font-semibold">
+        <Link href={"/"} className="cursor-pointer flex gap-10">
+          <Image src="/field.jpeg" alt="field" height={80} width={80} className="py-0 "/>
+          <Button variant={"miss"} className=" w-26 md:w-1/2 lg:w-24 py-2 rounded-md cursor-pointer flex-row items-center text-xs lg:text-xl md:text-xl font-exo font-semibold">
               BolaPadang.MY
           </Button>
         </Link>
@@ -29,6 +32,7 @@ export default async function NavBar() {
 
     {/* Right */}
     <div>
+      {/* <DarkMode/> */}
       <NavMenu session={session.data?.session} />
     </div>
 
